@@ -8,7 +8,11 @@ import com.airtribe.studentmanagement.exception.StudentNotFoundException;
 import com.airtribe.studentmanagement.service.CourseService;
 import com.airtribe.studentmanagement.service.EnrollmentService;
 import com.airtribe.studentmanagement.service.StudentService;
+import com.airtribe.studentmanagement.util.Helper;
 import com.airtribe.studentmanagement.util.InputValidator;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class StudentManagementSystemMain {
     public static void main(String[] args) {
@@ -80,11 +84,15 @@ public class StudentManagementSystemMain {
             System.out.println(enrolled);
         }
 
-        System.out.println("Get Student name with course name:-"+enrollmentService.findStudentNameWithCourse(s1.getId(), c1.getCourseId()));
-        System.out.println("Search Student Detail by name:-"+studentService.search("Diptesh"));
-        System.out.println("Get Student Grades by name:-"+enrollmentService.grade("Rahul"));
+        System.out.println("Get Student name with course name:-" + enrollmentService.findStudentNameWithCourse(s1.getId(), c1.getCourseId()));
+        System.out.println("Search Student Detail by name:-" + studentService.search("Diptesh"));
+        System.out.println("Get Student Grades by name:-" + enrollmentService.grade("Fatima"));
 
-        if(InputValidator.isValidName("333")){
+        List<String> keywords = Arrays.asList("Java", "NodeJS", "Python", "DataBase", "AI/ML");
+        String submission = "Java & NodeJS & Python assignment completed Successfully";
+        System.out.println("Evaluate the Grade According to submission of assignment:-" + Helper.autoGrade(submission, keywords));
+
+        if (InputValidator.isValidName("333@")) {
             System.out.println("Valid Name Your are using");
         } else {
             System.out.println("Invalid Name");
